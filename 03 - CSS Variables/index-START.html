@@ -23,6 +23,22 @@
 
   <style>
 
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
+
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -46,6 +62,39 @@
   </style>
 
   <script>
+    const inputs = document.querySelectorAll('.controls input');
+    
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      //document.querySelector('html').style.setProperty(`--${this.name}`, this.value + suffix);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    //inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('input', handleUpdate));
+
+    // let image = document.querySelector('img');
+    // let hl = document.querySelector('.hl');
+
+    // /* Spacing */
+    // let spacing = document.getElementById('spacing');
+    // spacing.addEventListener('input', (event) => {
+    //   image.style.setProperty('--spacing', event.target.value+'px');
+    // });
+
+    // /* Blur */
+    // let blurChangeElement = document.getElementById('blur');
+    // blurChangeElement.addEventListener('input', (event) => {
+    //   image.style.setProperty('--blur', event.target.value+'px');
+    // });
+
+    // /* Base Color */
+    // let baseColor = document.getElementById('base');
+    // baseColor.addEventListener('change', (event) => {
+    //   image.style.setProperty('--base', event.target.value);
+    //   hl.style.setProperty('--base', event.target.value);
+    // })
+
   </script>
 
 </body>
